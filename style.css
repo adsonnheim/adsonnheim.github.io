@@ -95,8 +95,42 @@ footer p {
   animation-name: light-up;
   animation-duration: 0.125s;
 
-  /*Makes end frame stay*/
+  /*Makes end frame stay, or, makes it not reset*/
   animation-fill-mode: forwards;
 
   cursor: pointer;
 }
+
+.test {
+  margin-top: calc((100vh - 75vh) / 2);
+  margin-bottom: calc((100vh - 75vh) / 2);
+  width: 25vw;
+  height: 75vh;
+  position: absolute;
+  text-align: center;
+  left: -30vw;
+  border: 1px solid white;
+}
+
+.test p {
+  color: white;
+  border: 1px dashed white;
+  margin: 25%;
+}
+/*
+@keyframes test {
+  from {
+    left: -30vw;
+  } to {
+    left: calc(50% + 12vw);
+  }
+}
+*/
+
+/*
+.test:hover {
+  animation-name: test;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+}
+*/
