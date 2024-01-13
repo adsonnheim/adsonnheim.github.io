@@ -13,26 +13,36 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-size: auto auto;
   background: linear-gradient(rgba(0, 0, 0, 0.95) 25%, var(--light-blue-opaque), rgba(0, 0, 0, 0.95) 62.5%);
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.95); 
 }
 
 .boxes {
   display: flex;
 
   /*Centers div inside the parent both horizontally and vertically*/
+  
   width: 25vw;
   height: 12.5vh;
+  
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -12.5vw;
-  margin-top: -6.25vw;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-12.5vw, -6.25vh);
+  
+  margin-top: calc(-12.5vh / 2);
+}
+
+@media (max-width: 1024px) {
+  .boxes {
+    display: flex;
+    flex-direction: column;
+    margin-top: calc(-12.5vh * 1.25);
+  }
 }
 
 div p, footer p {
-  font-size: 2rem;
+  font-size: 2.5vh;
   text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 255, 0.5);
 }
 
@@ -40,20 +50,21 @@ div p, footer p {
   /*Allows content to fill the parent*/
   flex-grow: 1;
 
-  border: 1px solid black;
+  /*flex-shrink: 1;*/
+
+  border: 0.1rem solid black;
   background-color: rgba(0, 0, 0, 1);
   color: var(--light-blue);
-  margin: 5px;
+  margin: 0.5rem;
+  
 
   /*Aligns content vertically and horizontally*/
-  display: flex;
+  display: flex;;
   justify-content: center;
   align-items: center;
 
   /*Sets items to be the same width*/
-  flex: 1 1 0px;
-
-  /*box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);*/
+  flex: 1 1 0rem;
 }
 
 footer p {
@@ -71,17 +82,6 @@ footer p {
   width: 100%;
 }
 
-/*
-@keyframes example {
-  from {
-    -webkit-transform: translate(12px, 50%);
-  }
-  to {
-    -webkit-transform: translate(24px, 100%);
-  }
-}
-*/
-
 @keyframes light-up {
   from {
     box-shadow: 0px 0px 0px var(--light-blue-opaque);
@@ -91,7 +91,7 @@ footer p {
   }
 }
 
-.boxes div:hover {
+.boxes div:hover, .back:hover {
   animation-name: light-up;
   animation-duration: 0.125s;
 
@@ -101,7 +101,11 @@ footer p {
   cursor: pointer;
 }
 
-.test {
+.above {
+  position: relative;
+}
+
+.projectsSheet, .resumeSheet, .aboutSheet {
   margin-top: calc((100vh - 75vh) / 2);
   margin-bottom: calc((100vh - 75vh) / 2);
   width: 25vw;
@@ -109,28 +113,25 @@ footer p {
   position: absolute;
   text-align: center;
   left: -30vw;
-  border: 1px solid white;
+  border: 1px solid var(--light-blue-opaque);
+  background-color: black;
+  border-radius: 1rem;
 }
 
-.test p {
-  color: white;
-  border: 1px dashed white;
+.projectsSheet p, .resumeSheet p, .aboutSheet p {
+  color: var(--light-blue);
   margin: 25%;
 }
-/*
-@keyframes test {
-  from {
-    left: -30vw;
-  } to {
-    left: calc(50% + 12vw);
-  }
-}
-*/
 
-/*
-.test:hover {
-  animation-name: test;
-  animation-duration: 2.5s;
-  animation-fill-mode: forwards;
+.back {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  padding: 0rem 2rem;
+  opacity: 0%;
+  pointer-events: none;
 }
-*/
+
+.back p {
+  color: var(--light-blue);
+}
